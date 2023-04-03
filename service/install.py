@@ -20,7 +20,7 @@ print(src_dir)
 print(image_path)
 
 if not os.path.exists(tool_dir) or not os.path.exists(install_path):
-    raise Warning('Install.mel  not found in {}'.format(tool_dir))
+    raise Warning('do not found \"Install.mel\" in {}'.format(tool_dir))
 
 """====================="""
 # Orig User Register
@@ -40,9 +40,10 @@ for pt_path in pt_file_path_ls:
         f.close()
     if not is_registered:
         l_read_join = l_read_join.replace('$usr_orig$', getpass.getuser())
-        print(l_read_join)
+        with open(pt_path, 'w') as f:
+            f.writelines(l_read_join)
+            f.close()
         print(pt_path)
-
 
 """====================="""
 # Shelf
