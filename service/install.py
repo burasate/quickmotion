@@ -3,7 +3,7 @@ QUICK MOTION SHELF INSTALLER
 """
 from maya import cmds
 from maya import mel
-import os, json, sys
+import os, json, sys, getpass
 
 """====================="""
 # Init
@@ -21,6 +21,27 @@ print(image_path)
 
 if not os.path.exists(tool_dir) or not os.path.exists(install_path):
     raise Warning('Install.mel  not found in {}'.format(tool_dir))
+
+"""====================="""
+# Orig User Register
+"""====================="""
+pt_file_path_ls = [
+    os.path.abspath(src_dir + os.sep + 'QuickMotion.py'),
+    os.path.abspath(src_dir + os.sep + 'quickmocap/quickmocap.py'),
+    os.path.abspath(src_dir + os.sep + 'rtgmatcher/rtgmatcher.py')
+]
+pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
+for pt_path in pt_file_path_ls:
+    is_registered = False
+    with open(pt_path, 'r') as f:
+        l_read = f.readlines()
+        l_read_join = '\n'.join(l_read)
+        is_registered = not '$usr_orig$' in l_read_join
+        f.close()
+    if not is_registered:
+        print(l_read_join)
+        print(pt_path)
+
 
 """====================="""
 # Shelf
@@ -44,9 +65,9 @@ try: imp.reload(QuickMotion)
 except:
     import QuickMotion
 
-qm = quickMotion_Ui()
+qm = QuickMotion.quickMotion_Ui()
 qm.show_ui()
 '''.format(src_dir)
 
-cmds.shelfButton(stp='python', iol='QM', parent=cur_shelf, ann='BRS QUICK MOTION', i=image_path, c=command)
-cmds.confirmDialog(title='BRS QUICK MOTION', message='Installation Successful.', button=['OK'])
+#cmds.shelfButton(stp='python', iol='QM', parent=cur_shelf, ann='BRS QUICK MOTION', i=image_path, c=command)
+#cmds.confirmDialog(title='BRS QUICK MOTION', message='Installation Successful.', button=['OK'])
