@@ -42,6 +42,5 @@ import QuickMotion
 qm = quickMotion_Ui()
 qm.show_ui()
 '''.format(src_dir)
-#cmds.shelfButton(stp='python', iol='QM', parent=cur_shelf, ann='BRS QUICK MOTION', i=image_path, c=command)
+cmds.shelfButton(stp='python', iol='QM', parent=cur_shelf, ann='BRS QUICK MOTION', i=image_path, c=command)
 cmds.confirmDialog(title='BRS QUICK MOTION', message='Installation Successful.', button=['OK'])
-exec(command)
