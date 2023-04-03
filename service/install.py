@@ -25,6 +25,7 @@ if not os.path.exists(tool_dir) or not os.path.exists(install_path):
 """====================="""
 # Gumroad License Key
 """====================="""
+'''
 gr_url = 'https://raw.githubusercontent.com/burasate/AniMateAssist/main/service/licsence.py'
 gr_u_read = uLib.urlopen(gr_url).read()
 gr_perma = 'uznhu'
@@ -33,6 +34,7 @@ exec(gr_u_read)
 grl = gr_license(product_name=gr_tool_name, product_code=gr_perma)
 grl.show_ui()
 print(grl.verify_result)
+'''
 
 """====================="""
 # Orig User Register to Files
