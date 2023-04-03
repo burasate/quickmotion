@@ -8,7 +8,7 @@ import os, json, sys
 maya_app_dir = mel.eval('getenv MAYA_APP_DIR')
 scripts_dir = os.path.abspath(mayaAppDir + os.sep + 'scripts')
 tool_dir = os.path.abspath(scripts_dir + os.sep + 'BRSQuickMotion')
-print(tool_dir, print(os.path.exists(tool_dir)))
+print(tool_dir, os.path.exists(tool_dir))
 
 """
 from maya import cmds
