@@ -44,6 +44,7 @@ for pt_path in pt_file_path_ls:
             f.writelines(l_read_join)
             f.close()
         print(pt_path)
+        
 
 """====================="""
 # Shelf
