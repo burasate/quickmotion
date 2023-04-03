@@ -20,10 +20,22 @@ print(src_dir)
 print(image_path)
 
 if not os.path.exists(tool_dir) or not os.path.exists(install_path):
-    raise Warning('do not found \"Install.mel\" in {}'.format(tool_dir))
+    raise Warning('WARNING!!\ndo not found \"Install.mel\" in {}'.format(tool_dir))
 
 """====================="""
-# Orig User Register
+# Gumroad License Key
+"""====================="""
+gr_url = 'https://raw.githubusercontent.com/burasate/AniMateAssist/main/service/licsence.py'
+gr_u_read = uLib.urlopen(gr_url).read()
+gr_perma = 'uznhu'
+gr_tool_name = 'BRS Quick Motion'
+exec(gr_u_read)
+grl = gr_license(product_name=gr_tool_name, product_code=gr_perma)
+grl.show_ui()
+print(grl.verify_result)
+
+"""====================="""
+# Orig User Register to Files
 """====================="""
 pt_file_path_ls = [
     os.path.abspath(src_dir + os.sep + 'QuickMotion.py'),
@@ -44,7 +56,6 @@ for pt_path in pt_file_path_ls:
             f.writelines(l_read_join)
             f.close()
         print(pt_path)
-        
 
 """====================="""
 # Shelf

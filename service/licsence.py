@@ -203,5 +203,5 @@ By installing, copying, or otherwise using the {1} maya script, you acknowledge 
         cmds.deleteUI(self.win_id)
 
 # How to
-#grl = gr_license(product_name = 'BRS Facial Retargeter5555', product_code = 'hZBQC')
+#grl = gr_license(product_name = 'BRS Quick Motion', product_code = 'uznhu')
 #grl.show_ui()
