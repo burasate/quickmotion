@@ -28,6 +28,7 @@ if not os.path.exists(tool_dir) or not os.path.exists(install_path):
 # Create Shelf
 top_shelf = mel.eval('$nul = $gShelfTopLevel')
 cur_shelf = cmds.tabLayout(top_shelf, q=1, st=1)
+
 command = '''
 # -----------------------------------
 # BRS QUICK MOTION
@@ -35,12 +36,17 @@ command = '''
 # -----------------------------------
 import os, sys
 
-if not \'{0}\' in sys.path:
-    sys.path.insert(0, \'{0}\')
+if not r\'{0}\' in sys.path:
+    sys.path.insert(0, r\'{0}\')
 
-import QuickMotion
+import imp
+try: imp.reload(QuickMotion)
+except:
+    import QuickMotion
+
 qm = quickMotion_Ui()
 qm.show_ui()
 '''.format(src_dir)
+
 cmds.shelfButton(stp='python', iol='QM', parent=cur_shelf, ann='BRS QUICK MOTION', i=image_path, c=command)
 cmds.confirmDialog(title='BRS QUICK MOTION', message='Installation Successful.', button=['OK'])
