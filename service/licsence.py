@@ -58,7 +58,7 @@ class gr_license:
         key = cmds.textField(self.ui_element['key_text'], q=1, tx=1)
         print(email, key),
 
-        verify = self.get_license_verify(key=key)
+        self.verify = self.get_license_verify(key=key)
         print(verify == None)
         if verify == None:
             cmds.warning('Please make sure the internet connection is connect')
