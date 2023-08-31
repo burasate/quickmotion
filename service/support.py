@@ -24,4 +24,30 @@ def update_version():
     print(install_path, os.path.exists(install_path))
     print(src_dir)
     print(image_path)
+
+    """====================="""
+    # Orig User Register to Files
+    """====================="""
+    pt_file_path_ls = [
+        os.path.abspath(src_dir + os.sep + 'QuickMotion.py'),
+        os.path.abspath(src_dir + os.sep + 'quickmocap/quickmocap.py'),
+        os.path.abspath(src_dir + os.sep + 'rtgmatcher/rtgmatcher.py')
+    ]
+    pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
+    for pt_path in pt_file_path_ls:
+        '''
+        is_registered = False
+        with open(pt_path, 'r') as f:
+            l_read = f.readlines()
+            l_read_join = ''.join(l_read)
+            is_registered = not '$usr_orig$' in l_read_join
+            f.close()
+        if not is_registered:
+            l_read_join = l_read_join.replace('$usr_orig$', getpass.getuser())
+            with open(pt_path, 'w') as f:
+                f.writelines(l_read_join)
+                f.close()
+            print(pt_path)
+        '''
+
 update_version()
