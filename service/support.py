@@ -35,6 +35,8 @@ def update_version():
     ]
     pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
     for pt_path in pt_file_path_ls:
+        print(pt_path)
+        print(pt_path[len(src_dir):])
         '''
         is_registered = False
         with open(pt_path, 'r') as f:
