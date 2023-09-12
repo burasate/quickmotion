@@ -132,7 +132,7 @@ class quickMocap_func:
         for ac in ac_ls:
             tc = cmds.keyframe(ac, q=1, tc=1)
             vc = cmds.keyframe(ac, q=1, vc=1)
-            if min(vc) == max(vc):
+            if min(vc) == max(vc) and len(vc) > 3:
                 cmds.cutKey(ac, t=(tc[1], tc[-2]))
 
     def delete_rtg_skeleton(self):
