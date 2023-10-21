@@ -25,6 +25,12 @@ import imp
 imp.reload(qm)
 imp.reload(skm)
 
+for root, dirs, files in os.walk(base_dir, topdown=False):
+    for name in files:
+        file_path = os.path.join(root, name)
+        if file_path.endswith('.pyc'):
+            os.remove(file_path)
+
 class scene:
     @staticmethod
     def get_fps(*_):
