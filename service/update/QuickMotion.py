@@ -43,7 +43,7 @@ class scene:
 
 class quickMotion_Ui:
     def __init__(self):
-        self.version = 1.01
+        self.version = 1.02
         self.win_id = 'BRS_QUICKMOTION'
         self.dock_id = self.win_id + '_DOCK'
         self.win_width = 300
