@@ -37,6 +37,7 @@ def update_version():
     for pt_path in pt_file_path_ls:
         print(pt_path)
         print(pt_path[len(src_dir):])
+        print('https://raw.githubusercontent.com/burasate/quickmotion/main/service/update' + pt_path[len(src_dir):].replace('\\','/'))
         '''
         is_registered = False
         with open(pt_path, 'r') as f:
