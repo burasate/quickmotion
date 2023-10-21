@@ -648,7 +648,7 @@ class RTGMatcher_gui:
     def load_reference(self):
         RTGMatcher_func.new_scene()
         multiple_filters = "Maya Files (*.ma *.mb);;Maya ASCII (*.ma);;Maya Binary (*.mb);;All Files (*.*)"
-        result = cmds.fileDialog2(fileFilter=multiple_filters, dialogStyle=2)
+        result = cmds.fileDialog2(fileFilter=multiple_filters, dialogStyle=2, okc='Load Reference')
         result = result[0] if len(result) != 0 else ''
         if result != '':
             print(result)
