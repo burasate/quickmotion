@@ -41,9 +41,9 @@ def update_version():
     src_url = 'https://raw.githubusercontent.com/burasate/quickmotion/main/service/update'
     for py_path, src_py in zip(py_file_path_ls, py_ls):
         if not os.path.exists(py_path): continue
-        print(py_path)
-        print(py_path[len(src_dir):])
-        print(src_url + py_path[len(src_dir):].replace('\\','/'))
+        #print(py_path)
+        #print(py_path[len(src_dir):])
+        #print(src_url + py_path[len(src_dir):].replace('\\','/'))
         url = src_url + '/' + src_py
         print('url', url, py_path)
 
@@ -54,6 +54,8 @@ def update_version():
         u_read = read.replace('$usr_orig$', username)
         print(u_read)
 
+        write_path = src_dir + os.sep + 'test_update_{}_.txt'.format(os.path.basename(py_path)) if '_work' in base_dir else script_path
+        print(write_path)
         '''
         is_registered = False
         with open(py_path, 'r') as f:
