@@ -28,18 +28,18 @@ def update_version():
     """====================="""
     # Orig User Register to Files
     """====================="""
-    pt_file_path_ls = [
-        os.path.abspath(src_dir + os.sep + 'QuickMotion.py'),
-        os.path.abspath(src_dir + os.sep + 'quickmocap/quickmocap.py'),
-        os.path.abspath(src_dir + os.sep + 'rtgmatcher/rtgmatcher.py')
-    ]
-    pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
+    py_ls = ['QuickMotion.py', 'quickmocap/quickmocap.py', 'rtgmatcher/rtgmatcher.py']
+    py_file_path_ls = [src_dir + os.sep + i for i in py_ls]
+    #pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
     src_url = 'https://raw.githubusercontent.com/burasate/quickmotion/main/service/update'
-    for pt_path in pt_file_path_ls:
-        print(pt_path)
-        print(pt_path[len(src_dir):])
-        print(src_url + pt_path[len(src_dir):].replace('\\','/'))
-        
+    for py_path, src_py in zip(py_file_path_ls, py_ls):
+        if not os.path.exists(py_path): continue
+        print(py_path)
+        print(py_path[len(src_dir):])
+        print(src_url + py_path[len(src_dir):].replace('\\','/'))
+        u = src_url + '/' + src_py
+        print('url', u)
+
         '''
         is_registered = False
         with open(pt_path, 'r') as f:
