@@ -34,10 +34,12 @@ def update_version():
         os.path.abspath(src_dir + os.sep + 'rtgmatcher/rtgmatcher.py')
     ]
     pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
+    src_url = 'https://raw.githubusercontent.com/burasate/quickmotion/main/service/update'
     for pt_path in pt_file_path_ls:
         print(pt_path)
         print(pt_path[len(src_dir):])
-        print('https://raw.githubusercontent.com/burasate/quickmotion/main/service/update' + pt_path[len(src_dir):].replace('\\','/'))
+        print(src_url + pt_path[len(src_dir):].replace('\\','/'))
+        
         '''
         is_registered = False
         with open(pt_path, 'r') as f:

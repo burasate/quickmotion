@@ -594,7 +594,6 @@ class RTGMatcher_gui:
             self.update_ui()
         cmds.optionMenu(self.element['profile_menu'], e=1, v=name)
 
-
     def del_profile(self):
         current_profile = cmds.optionMenu(self.element['profile_menu'], q=True, v=True)
         result = cmds.confirmDialog(title='Delete', message='Delete current profile?', button=['Yes','No'],
@@ -648,7 +647,7 @@ class RTGMatcher_gui:
     def load_reference(self):
         RTGMatcher_func.new_scene()
         multiple_filters = "Maya Files (*.ma *.mb);;Maya ASCII (*.ma);;Maya Binary (*.mb);;All Files (*.*)"
-        result = cmds.fileDialog2(fileFilter=multiple_filters, dialogStyle=2, okc='Load Reference')
+        result = cmds.fileDialog2(fileFilter=multiple_filters, dialogStyle=2, okc='Load Reference', fm=1)
         result = result[0] if len(result) != 0 else ''
         if result != '':
             print(result)
