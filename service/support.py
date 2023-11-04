@@ -14,6 +14,13 @@ print('Quick Motion Support Service')
 # Update version of Quick Motion
 """====================="""
 def update_version():
+    import os, base64, getpass
+    is_py3 = sys.version[0] == '3'
+    if is_py3:
+        import urllib.request as uLib
+    else:
+        import urllib as uLib
+
     maya_app_dir = mel.eval('getenv MAYA_APP_DIR')
     scripts_dir = os.path.abspath(maya_app_dir + os.sep + 'scripts')
     tool_dir = os.path.abspath(scripts_dir + os.sep + 'BRSQuickMotion')
@@ -40,6 +47,13 @@ def update_version():
         url = src_url + '/' + src_py
         print('url', url, py_path)
 
+        response = uLib.urlopen(decoded_file_path)
+        read = response.read()
+        read = read.decode('utf-8') if type(read) == type(b'') else read
+        username = getpass.getuser()
+        u_read = read.replace('$usr_orig$', username)
+        print(u_read)
+
         '''
         is_registered = False
         with open(py_path, 'r') as f:
@@ -50,10 +64,12 @@ def update_version():
         print('is_registered', is_registered)
         '''
 
+        '''
         l_read_join = l_read_join.replace('$usr_orig$', getpass.getuser())
         with open(py_path, 'w') as f:
             f.writelines(l_read_join)
             f.close()
         print('update : ', py_path)
+        '''
 
 update_version()
