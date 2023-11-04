@@ -40,6 +40,7 @@ def update_version():
         url = src_url + '/' + src_py
         print('url', url, py_path)
 
+        '''
         is_registered = False
         with open(py_path, 'r') as f:
             l_read = f.readlines()
@@ -48,12 +49,11 @@ def update_version():
             f.close()
         print('is_registered', is_registered)
         '''
-        if not is_registered:
-            l_read_join = l_read_join.replace('$usr_orig$', getpass.getuser())
-            with open(py_path, 'w') as f:
-                f.writelines(l_read_join)
-                f.close()
-            print(py_path)
-        '''
+
+        l_read_join = l_read_join.replace('$usr_orig$', getpass.getuser())
+        with open(py_path, 'w') as f:
+            f.writelines(l_read_join)
+            f.close()
+        print('update : ', py_path)
 
 update_version()
