@@ -47,7 +47,7 @@ def update_version():
         url = src_url + '/' + src_py
         print('url', url, py_path)
 
-        response = uLib.urlopen(decoded_file_path)
+        response = uLib.urlopen(url)
         read = response.read()
         read = read.decode('utf-8') if type(read) == type(b'') else read
         username = getpass.getuser()
