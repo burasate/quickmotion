@@ -53,7 +53,7 @@ def update_version():
         username = getpass.getuser()
         u_read = read.replace('$usr_orig$', username)
         print('------------')
-        print(u_read)
+        #print(u_read)
         print('url', url, py_path)
         with open(py_path, 'w') as f:
             f.writelines(u_read)
