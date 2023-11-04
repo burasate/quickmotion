@@ -37,8 +37,8 @@ def update_version():
         print(py_path)
         print(py_path[len(src_dir):])
         print(src_url + py_path[len(src_dir):].replace('\\','/'))
-        u = src_url + '/' + src_py
-        print('url', u)
+        url = src_url + '/' + src_py
+        print('url', url, py_path)
 
         '''
         is_registered = False
