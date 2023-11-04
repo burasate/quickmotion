@@ -45,17 +45,21 @@ def update_version():
         #print(py_path[len(src_dir):])
         #print(src_url + py_path[len(src_dir):].replace('\\','/'))
         url = src_url + '/' + src_py
-        print('url', url, py_path)
+
 
         response = uLib.urlopen(url)
         read = response.read()
         read = read.decode('utf-8') if type(read) == type(b'') else read
         username = getpass.getuser()
         u_read = read.replace('$usr_orig$', username)
+        print('------------')
         print(u_read)
+        print('url', url, py_path)
+        with open(py_path, 'w') as f:
+            f.writelines(u_read)
+            f.close()
+            print('{}  is  updated..'.format(py_path))
 
-        write_path = src_dir + os.sep + 'test_update_{}_.txt'.format(os.path.basename(py_path)) if '_work' in base_dir else script_path
-        print(write_path)
         '''
         is_registered = False
         with open(py_path, 'r') as f:
