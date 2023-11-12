@@ -256,7 +256,7 @@ class quickMocap_gui:
             cmds.text(l='', w=self.win_width * .2)
             self.element[i['cb_name']] = cmds.checkBox(l=i['name'], v=0)
             if i['op_name'] != None:
-                self.element[i['op_name']] = cmds.floatField(v=i['op_value'], pre=1)
+                self.element[i['op_name']] = cmds.floatField(v=i['op_value'], pre=2)
             else:
                 cmds.text(l='')
             #self.element[i['sname']+'_st'] = cmds.text(l='', w=self.win_width * .03, bgc=self.color['shadow'])
