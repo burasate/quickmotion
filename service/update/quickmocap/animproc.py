@@ -185,9 +185,9 @@ class autoAnimProcessor:
         cmds.scaleKey(ac_ls, ts=factor, tp=frame_pv)
 
         #new keyframe
-        tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
+        tc_ls = sorted(list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)])))
         cmds.playbackOptions(e=1, ast=min(tc_ls), aet=max(tc_ls), min=min(tc_ls), max=max(tc_ls))
-        util.bake_anim(ac_ls, t=(tc[0], tc[-1]))
+        util.bake_anim(ac_ls, t=(tc_ls[0], tc_ls[-1]))
         tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
         [cmds.cutKey(ac_ls, t=(tc_ls[i],)) for i in range(len(tc_ls)) if round(tc_ls[i],0) != tc_ls[i]]
 
