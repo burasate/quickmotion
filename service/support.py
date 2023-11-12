@@ -37,7 +37,7 @@ def update_version():
     """====================="""
     py_ls = [
         'QuickMotion.py', 'quickmocap/quickmocap.py', 'rtgmatcher/rtgmatcher.py',
-        'quickmocap/animexport.py', 'quickmocap/animproc.py.py'
+        'quickmocap/animexport.py', 'quickmocap/animproc.py'
     ]
     py_file_path_ls = [src_dir + os.sep + i for i in py_ls]
     #pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
