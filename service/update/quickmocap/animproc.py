@@ -188,17 +188,8 @@ class autoAnimProcessor:
         tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
         cmds.playbackOptions(e=1, ast=min(tc_ls), aet=max(tc_ls), min=min(tc_ls), max=max(tc_ls))
         util.bake_anim(ac_ls, t=(tc[0], tc[-1]))
-        '''
-        for f in tc:
-            round_f = round(f,0)
-            if not f in new_tc:
-                cmds.setKeyframe(ac_ls, t=(round_f,))
-                cmds.cutKey(ac_ls, t=(f,))
-        '''
-
-
-        #print(tc)
-        #print(new_tc)
+        tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
+        [cmds.cutKey(ac_ls, t=(tc_ls[i],)) for i in range(len(tc_ls)) if round(tc_ls[i],0) != tc_ls[i]]
 
 
 #al = animationLayer()
