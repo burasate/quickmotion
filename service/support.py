@@ -35,7 +35,10 @@ def update_version():
     """====================="""
     # Orig User Register to Files
     """====================="""
-    py_ls = ['QuickMotion.py', 'quickmocap/quickmocap.py', 'rtgmatcher/rtgmatcher.py']
+    py_ls = [
+        'QuickMotion.py', 'quickmocap/quickmocap.py', 'rtgmatcher/rtgmatcher.py',
+        'quickmocap/animexport.py', 'quickmocap/animproc.py.py'
+    ]
     py_file_path_ls = [src_dir + os.sep + i for i in py_ls]
     #pt_file_path_ls = [i for i in pt_file_path_ls if os.path.exists(i)]
     src_url = 'https://raw.githubusercontent.com/burasate/quickmotion/main/service/update'
