@@ -60,10 +60,10 @@ class util:
         return con_ls
 
     @staticmethod
-    def bake_anim(obj_ls, t=(0.0,0.0), at=['tx','ty','tz','rx','ry','rz']):
+    def bake_anim(obj_ls, t=(0.0,0.0), at=['tx','ty','tz','rx','ry','rz'], sample=1.0):
         try:
             cmds.refresh(su=1)
-            cmds.bakeResults(obj_ls, simulation=1, sampleBy=1, disableImplicitControl=1, preserveOutsideKeys=1,
+            cmds.bakeResults(obj_ls, simulation=1, sampleBy=sample, disableImplicitControl=1, preserveOutsideKeys=1,
                              sparseAnimCurveBake=0, t=t, at=at)
             cmds.filterCurve(obj_ls)
         except:
@@ -187,10 +187,10 @@ class autoAnimProcessor:
         #new keyframe
         tc_ls = sorted(list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)])))
         cmds.playbackOptions(e=1, ast=min(tc_ls), aet=max(tc_ls), min=min(tc_ls), max=max(tc_ls))
-        util.bake_anim(ac_ls, t=(tc_ls[0], tc_ls[-1]))
+        bake_sample = 1.0 / factor if factor < 1.0 else 1.0
+        util.bake_anim(ac_ls, t=(tc_ls[0], tc_ls[-1]), sample=bake_sample)
         tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
         [cmds.cutKey(ac_ls, t=(tc_ls[i],)) for i in range(len(tc_ls)) if round(tc_ls[i],0) != tc_ls[i]]
-
 
 #al = animationLayer()
 #print(al.test)
