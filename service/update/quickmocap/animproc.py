@@ -187,7 +187,6 @@ class autoAnimProcessor:
         #new keyframe
         tc_ls = sorted(list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)])))
         cmds.playbackOptions(e=1, ast=min(tc_ls), aet=max(tc_ls), min=min(tc_ls), max=max(tc_ls))
-        bake_sample = 1.0 / factor if factor < 1.0 else 1.0
         util.bake_anim(ac_ls, t=(tc_ls[0], tc_ls[-1]), sample=bake_sample)
         tc_ls = list(set([round(i, 0) for i in cmds.keyframe(ac_ls, q=1, tc=1)]))
         [cmds.cutKey(ac_ls, t=(tc_ls[i],)) for i in range(len(tc_ls)) if round(tc_ls[i],0) != tc_ls[i]]
